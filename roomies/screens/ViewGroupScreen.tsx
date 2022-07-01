@@ -2,8 +2,11 @@ import { View, Text, StyleSheet } from "react-native";
 import React from "react";
 import { useAppSelector } from "../redux/hooks";
 import { getGroupById } from "../redux/groupsReducer";
+import { RootStackScreenProps } from "../types";
 
-export default function ViewGroupScreen({ route }: any) {
+export default function ViewGroupScreen({
+  route,
+}: RootStackScreenProps<"Group">) {
   const { groupId } = route.params;
   const group = useAppSelector(getGroupById(groupId));
   return (

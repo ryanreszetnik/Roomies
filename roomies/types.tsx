@@ -12,6 +12,7 @@ import {
   RouteProp,
 } from "@react-navigation/native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { Friend } from "./data-types";
 
 declare global {
   namespace ReactNavigation {
@@ -25,11 +26,16 @@ export type RootStackParamList = {
   CreateGroup: undefined;
   NotFound: undefined;
   Group: GroupScreenParamList;
+  AddGroupMember: AddGroupMemberParamList;
+};
+
+export type AddGroupMemberParamList = {
+  groupId: string;
 };
 
 export type GroupScreenParamList = {
-  groupId: string | undefined;
-  groupName: string | undefined;
+  groupId: string;
+  groupName: string;
 };
 
 export type RootStackScreenProps<Screen extends keyof RootStackParamList> =

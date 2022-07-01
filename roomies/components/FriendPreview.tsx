@@ -8,14 +8,14 @@ export default function FriendPreview({
   onPress,
 }: {
   name: string;
-  phoneNumber: string;
+  phoneNumber?: string;
   id: string;
   onPress: (id: string) => void;
 }) {
   return (
     <TouchableOpacity style={styles.button} onPress={() => onPress(id)}>
       <Text style={styles.name}>{name}</Text>
-      <Text style={styles.phoneNumber}>{phoneNumber}</Text>
+      {phoneNumber && <Text style={styles.phoneNumber}>{phoneNumber}</Text>}
     </TouchableOpacity>
   );
 }

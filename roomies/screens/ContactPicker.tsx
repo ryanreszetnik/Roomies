@@ -1,14 +1,5 @@
-import {
-  View,
-  Text,
-  ScrollView,
-  StyleSheet,
-  Modal,
-  SafeAreaView,
-  Button,
-  Pressable,
-} from "react-native";
-import React, { useEffect, useRef, useState } from "react";
+import { View, Text, StyleSheet } from "react-native";
+import React, { useEffect, useState } from "react";
 import * as Contacts from "expo-contacts";
 import ContactCard from "../components/ContactCard";
 import SearchBar from "../components/SearchBar";

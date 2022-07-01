@@ -31,10 +31,13 @@ import { faShoppingCart } from "@fortawesome/free-solid-svg-icons/faShoppingCart
 import { faHouse } from "@fortawesome/free-solid-svg-icons/faHouse";
 import { faList } from "@fortawesome/free-solid-svg-icons/faList";
 import { faDollarSign } from "@fortawesome/free-solid-svg-icons/faDollarSign";
+import { faChevronLeft } from "@fortawesome/free-solid-svg-icons/faChevronLeft";
 import ContactPicker from "../screens/ContactPicker";
 import NavigationButton from "../components/NavigationButton";
 import CreateGroupScreen from "../screens/CreateGroupScreen";
 import ViewGroupScreen from "../screens/ViewGroupScreen";
+import { addFriends } from "../redux/friendsReducer";
+import AddGroupMember from "../screens/AddGroupMember";
 
 export default function Navigation({
   colorScheme,
@@ -74,10 +77,35 @@ function RootNavigator() {
       <Stack.Screen
         name="Group"
         component={ViewGroupScreen}
-        options={({ route }) => ({
+        options={({ route, navigation }: RootStackScreenProps<"Group">) => ({
           title: route.params.groupName,
+          headerRight: () => (
+            <NavigationButton
+              title="Add Member"
+              onPress={() =>
+                navigation.navigate("AddGroupMember", {
+                  groupId: route.params.groupId,
+                })
+              }
+            />
+          ),
+          headerLeft: () => (
+            <NavigationButton
+              showBack
+              onPress={() => navigation.pop()}
+              title="Back"
+            />
+          ),
         })}
       />
+      <Stack.Screen
+        name="AddGroupMember"
+        component={AddGroupMember}
+        options={() => ({
+          title: "Add Member",
+        })}
+      />
+
       {
         //@ts-ignore
         <Stack.Group screenOptions={{ presentation: "fullScreenModal" }}>

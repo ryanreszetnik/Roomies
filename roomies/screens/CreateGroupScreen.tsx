@@ -15,7 +15,7 @@ import SearchBar from "../components/SearchBar";
 import NavigationButton from "../components/NavigationButton";
 import ModalWrapper from "../components/ModalWrapper";
 import { useAppDispatch } from "../redux/hooks";
-import { addGroup } from "../redux/groupsReducer";
+import { createGroup } from "../redux/groupsReducer";
 import CustomTextInput from "../components/CustomTextInput";
 export default function CreateGroupScreen({ navigation }: any) {
   const [saving, setSaving] = useState(false);
@@ -39,8 +39,7 @@ export default function CreateGroupScreen({ navigation }: any) {
   const dispatch = useAppDispatch();
   const save = () => {
     if (groupName.length > 0) {
-      const newGroup = { name: groupName, id: Math.random().toString() };
-      dispatch(addGroup(newGroup));
+      dispatch(createGroup(groupName));
       navigation.pop();
     }
   };
